@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  subtitle: MyText
+  scope: MyString
+  task_count: 1
+  tasks_done: 1
+  done: false
+  icon: MyString
+  color: MyString
+  priority: MyString
+
+two:
+  title: MyString
+  subtitle: MyText
+  scope: MyString
+  task_count: 1
+  tasks_done: 1
+  done: false
+  icon: MyString
+  color: MyString
+  priority: MyString
