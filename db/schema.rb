@@ -10,30 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_27_154632) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_28_214226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pgcrypto"
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "priority"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.datetime "deadline"
-    t.integer "position"
-    t.bigint "todo_list_id", null: false
+    t.uuid "todo_list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_list_id"], name: "index_tasks_on_todo_list_id"
   end
 
-  create_table "todo_lists", force: :cascade do |t|
+  create_table "todo_lists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.text "subtitle"
     t.string "scope"
-    t.integer "task_count"
-    t.integer "tasks_done"
-    t.boolean "done"
+    t.integer "task_count", default: 0
+    t.integer "tasks_done", default: 0
+    t.boolean "done", default: false
     t.string "icon"
     t.string "color"
     t.string "priority"
