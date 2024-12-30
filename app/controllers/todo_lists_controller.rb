@@ -10,6 +10,16 @@ class TodoListsController < ApplicationController
     end
   end
 
+  def show
+    todo_list = TodoLists::ShowTodoListService.new(params[:id]).execute
+
+    if todo_list
+      render json: { todo_list: todo_list }, status: :ok
+    else
+      render json: { error: "TodoList não encontrada." }, status: :not_found
+    end
+  end
+
   def update
     params_for_update = todo_list_params
 
