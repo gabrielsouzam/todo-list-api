@@ -13,9 +13,18 @@ class TasksController < ApplicationController
     end
   end
 
+  def update_status
+    begin
+      task = Tasks::UpdateTaskStatus.new(params[:id], params[:done]).call
+      render json: { task: task }, status: :ok
+    rescue => e
+      render json: { error: e.message }, status: :unprocessable_entity
+    end
+  end
+
   def update
     begin
-      task = Tasks::UpdateTask.new(task_id: params[:id], params: task_params).execute
+      task = Tasks::UpdateTask.new(task_id: params[:id], params: task_params).call
       render json: { task: task, message: "Task alterada com sucesso" }, status: :ok
     rescue ActiveRecord::RecordInvalid => e
       render json: { error: e.message }, status: :unprocessable_entity
@@ -26,7 +35,7 @@ class TasksController < ApplicationController
 
   def destroy
     begin
-      Tasks::DestroyTask.new(task_id: params[:id]).execute
+      Tasks::DestroyTask.new(task_id: params[:id]).call
       render json: { message: "Task deletada com sucesso" }, status: :ok
     rescue ActiveRecord::RecordNotFound
       render json: { error: "Task não foi encontrada." }, status: :not_found

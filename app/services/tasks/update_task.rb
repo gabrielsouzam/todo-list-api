@@ -5,7 +5,7 @@ module Tasks
       @params = params
     end
 
-    def execute
+    def call
       update_task
     end
 
