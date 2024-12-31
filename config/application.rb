@@ -22,5 +22,8 @@ module TodoListApi
                  methods: [ :get, :post, :put, :patch, :delete, :options, :head ]
       end
     end
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: "_todo_list_api_session"
   end
 end
