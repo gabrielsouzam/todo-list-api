@@ -13,7 +13,9 @@ services:
     startCommand: "bundle exec rails server -p $PORT -b 0.0.0.0"
     envVars:
       - key: DATABASE_URL
-        value: "postgresql://todo_list_db_fff5_user:hWNBvbQqTcxZp4diixIFZ5Iljk7cz9io@dpg-ctq18u9opnds73f3216g-a/todo_list_db_fff5"
+        fromDatabase:
+          name: todo_list_db
+          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
