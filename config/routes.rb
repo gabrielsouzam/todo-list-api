@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "render/index"
   devise_for :users, controllers: {
   registrations: "users/registrations",
   sessions: "users/sessions"
@@ -25,4 +26,6 @@ Rails.application.routes.draw do
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
+
+  root "render#index"
 end

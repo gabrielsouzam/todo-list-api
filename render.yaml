@@ -1,0 +1,20 @@
+databases:
+  - name: todo_list_db
+    databaseName: todo_list_db_ff5
+    user: todo_list_db_ff5_user
+    plan: free
+
+services:
+  - type: web
+    name: todo_list_api
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        value: "postgresql://todo_list_db_fff5_user:hWNBvbQqTcxZp4diixIFZ5Iljk7cz9io@dpg-ctq18u9opnds73f3216g-a/todo_list_db_fff5"
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
