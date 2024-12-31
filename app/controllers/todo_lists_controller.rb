@@ -1,4 +1,5 @@
 class TodoListsController < ApplicationController
+  protect_from_forgery with: :null_session, if: -> { request.format.json? }
   def create
     params_for_todo_list = todo_list_params
 
@@ -11,7 +12,7 @@ class TodoListsController < ApplicationController
   end
 
   def show
-    todo_list = TodoLists::ShowTodoListService.new(params[:id]).execute
+    todo_list = TodoLists::ShowTodoListService.new(params[:id]).call
 
     if todo_list
       render json: { todo_list: todo_list }, status: :ok
@@ -52,13 +53,19 @@ class TodoListsController < ApplicationController
   end
 
   def index
-    todo_lists = TodoLists::ListAllTodoLists.new.execute
-    render json: { todo_lists: todo_lists }, status: :ok
+    user_id = params[:user_id]
+    if user_id
+      todo_lists = TodoLists::ListUserTodoLists.new(user_id).call
+      render json: { todo_lists: todo_lists }, status: :ok
+    else
+      render json: { error: "User ID is required" }, status: :unprocessable_entity
+    end
   end
+
 
   private
 
   def todo_list_params
-    params.require(:todo_list).permit(:title, :subtitle, :scope, :task_count, :tasks_done, :done, :icon, :color, :priority)
+    params.require(:todo_list).permit(:title, :subtitle, :scope, :task_count, :tasks_done, :done, :icon, :color, :priority, :user_id)
   end
 end
