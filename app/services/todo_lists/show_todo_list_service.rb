@@ -4,7 +4,7 @@ module TodoLists
       @id = id
     end
 
-    def execute
+    def call
       TodoList.find(@id)
     rescue ActiveRecord::RecordNotFound
       nil
