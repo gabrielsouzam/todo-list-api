@@ -16,7 +16,7 @@ module TodoListApi
     config.autoload_lib(ignore: %w[assets tasks])
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "http://localhost:5173"
+        origins "https://todo-list-five-green-98.vercel.app/"
         resource "*",
                  headers: :any,
                  methods: [ :get, :post, :put, :patch, :delete, :options, :head ]
