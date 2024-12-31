@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  protect_from_forgery with: :null_session, if: -> { request.format.json? }
+
   def create
     params_for_task = task_params
 
