@@ -3,6 +3,10 @@
 ## Descrição
 O **TodoList Back-End** é a API que suporta o aplicativo de gerenciamento de tarefas **TodoList**. Desenvolvida em **Ruby on Rails**, a aplicação lida com autenticação de usuários, gerenciamento de listas de tarefas e armazenamento de dados. A arquitetura do back-end foi projetada para ser modular e fácil de manter, utilizando práticas como divisão em services e controllers.
 
+## Ferramenta de organização 
+
+- [Link para o trello](https://trello.com/b/T5HLHIam/todo-list)
+
 ## Decisões Técnicas
 - **Framework:** Desenvolvido com **Ruby on Rails**, aproveitando sua rapidez no desenvolvimento e a escalabilidade para APIs RESTful.
 - **Autenticação:** Implementada com **Devise** e complementada com **JWT (JSON Web Tokens)** para autenticação baseada em tokens.
@@ -60,6 +64,4 @@ O **TodoList Back-End** é a API que suporta o aplicativo de gerenciamento de ta
 ## Autores
 - Gabriel Mendes
 
-## Link para a API
-- [Clique aqui para acessar a API](https://todo-list-api-a1aw.onrender.com/)
 
