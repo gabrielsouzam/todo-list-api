@@ -14,6 +14,11 @@ O **TodoList Back-End** é a API que suporta o aplicativo de gerenciamento de ta
 - **Estrutura Modular:** O back-end adota uma arquitetura baseada em **services**, que desacopla a lógica de negócios dos controllers, promovendo um código limpo e de fácil manutenção.
 - **Segurança:** Uso de CORS para controle de acesso e validação de tokens JWT para proteger os endpoints da API.
 
+## Modelagem de classes
+
+![image](https://github.com/user-attachments/assets/c647a78a-72d7-4e09-ad0d-7b8bdd15be22)
+
+
 ## Funcionalidades
 - **Autenticação de Usuários:**
   - Cadastro de novos usuários com validação de email e senha.
@@ -42,7 +47,6 @@ O **TodoList Back-End** é a API que suporta o aplicativo de gerenciamento de ta
 - **app/services:** Implementa toda a lógica de negócios, garantindo separação de responsabilidades.
 - **app/models:** Contém os modelos de dados e as validações.
 - **config/initializers:** Configurações específicas para JWT, CORS, Devise e banco de dados.
-
 
 ## Exemplos de Endpoints
 - **Autenticação:**
